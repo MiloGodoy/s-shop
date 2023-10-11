@@ -8,7 +8,7 @@ const Navbar = () => {
   const activeStyle = "underline underline-offset-4";
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
+    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white">
       <ul className="flex items-center gap-3">
         <li className="font-semibold text-lg">
           <NavLink to="/">S-Shop</NavLink>
@@ -78,7 +78,7 @@ const Navbar = () => {
             My Orders
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
             to="/my-account"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -93,7 +93,7 @@ const Navbar = () => {
           >
             Sign In
           </NavLink>
-        </li>
+        </li> */}
         <li className="flex">
           <ShoppingCartIcon className="h-5 w-6 text-black"></ShoppingCartIcon>{" "}
           {context.cartProducts.length}
