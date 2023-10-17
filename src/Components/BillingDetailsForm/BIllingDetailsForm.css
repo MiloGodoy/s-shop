@@ -1,0 +1,31 @@
+.gray-background {
+    background-color: #f2f2f2; /* Fondo gris */
+    padding: 8px; /* Espacio interior */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 4px; /* Bordes redondeados */
+    width: 100%; /* Ancho completo */
+    margin-bottom: 10px; /* Espacio inferior */
+    font-size: small;
+  }
+  
+  .form-group {
+    margin-bottom: 20px; /* Espacio entre grupos de campos */
+  }
+  
+  /* Estilos para el botón de realizar el pedido */
+.submit-button {
+    background-color: #000; /* Negro */
+    color: #fff; /* Letras blancas */
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 auto; /* Centra horizontalmente */
+    display: block
+  }
+  
+  .submit-button:hover {
+    background-color: #333; /* Color de fondo oscuro al pasar el ratón */
+    color: #fff;
+  }
+  

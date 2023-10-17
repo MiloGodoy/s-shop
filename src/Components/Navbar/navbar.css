@@ -1,0 +1,80 @@
+.app__navbar-links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    list-style: none;
+}
+
+app__navbar-links li {
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
+.app__navbar-links li:hover {
+    color: blue;
+}
+.app__navbar-smallscreen {
+    display: none;
+}
+
+#last-item {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+}
+
+#last-item span {
+    margin-left: 5px;
+}
+
+.app__navbar-smallscreen_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+    background: white;
+    transition: 0.5s ease;
+
+    flex-direction: column;
+    z-index: 5;
+}
+
+.app__navbar-smallscreen_overlay .overlay__close {
+    font-size: 27px;
+    color: black;
+    cursor: pointer;
+
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.app__navbar-smallscreen_links {
+    list-style: none;
+}
+
+.app__navbar-smallscreen_links li {
+    margin: 2rem;
+    cursor: pointer;
+    color: var(--color-golden);
+    font-size: 2rem;
+    text-align: center;
+    font-family: var(--font-base);
+}
+
+.app__navbar-smallscreen-links li:hover {
+    color: var(--color-white);
+}
+
+@media screen and (max-width: 900px ) {
+    #nav-links {
+        display: none;
+    }
+    .app__navbar-smallscreen {
+        display: flex;
+    }
+
+}
