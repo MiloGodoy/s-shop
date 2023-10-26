@@ -18,7 +18,7 @@ const CheckoutSideMenu = () => {
 
   const handleCheckout = () => {
     const orderToAdd = {
-      date: "01.06.23",
+      date: "01.02.23",
       products: context.cartProducts,
       totalProducts: context.cartProducts.length,
       totalPrice: totalPrice(context.cartProducts),
@@ -26,7 +26,10 @@ const CheckoutSideMenu = () => {
 
     context.setOrder([...context.order, orderToAdd]);
     context.setCartProducts([]);
-    context.setSearchByTitle(null);
+  };
+
+  const handleCloseCheckout = () => {
+    context.closeCheckoutSideMenu();
   };
 
   return (
@@ -58,15 +61,18 @@ const CheckoutSideMenu = () => {
       </div>
       <div className="px-6 mb-6">
         <p className="flex justify-between items-center mb-2">
-          <span className="p-4px font-light">Total: </span>
-          <span className="font-bold text 2xl">
+          <span className="font-light">Total:</span>
+          <span className="font-medium text-2xl">
             ${totalPrice(context.cartProducts)}
           </span>
         </p>
         <Link to="/my-orders/last">
           <button
             className="bg-black py-3 text-white w-full rounded-lg"
-            onClick={() => handleCheckout()}
+            onClick={() => {
+              handleCheckout();
+              handleCloseCheckout()
+            }}
           >
             Checkout
           </button>

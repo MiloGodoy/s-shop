@@ -15,7 +15,7 @@
   /* Estilos para el botón de realizar el pedido */
 .submit-button {
     background-color: #000; /* Negro */
-    color: #fff; /* Letras blancas */
+    color: black; /* Letras blancas */
     border: 1px solid #000;
     border-radius: 4px;
     padding: 10px 20px;
