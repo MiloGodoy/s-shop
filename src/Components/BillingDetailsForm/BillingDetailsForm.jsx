@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import swal from 'sweetalert'
-import "./BillingDetailsForm.css";
+import swal from "sweetalert";
+import "./BIllingDetailsForm.css";
 
 const BillingDetailsForm = () => {
   //declaration of variables
@@ -44,14 +44,12 @@ const BillingDetailsForm = () => {
           title: "Pedido Realizado",
           text: "Su pedido fue realizado, en breve un asesor se comunicará con usted para coordinar la entrega de su pedido",
           icon: "success",
-          button: "Aceptar"
+          button: "Aceptar",
         });
         window.location.href = "/";
       })
       .catch((error) => console.error(error));
   };
-
-
 
   return (
     <div className="billing-details-form">
