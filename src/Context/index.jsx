@@ -6,6 +6,18 @@ export const ShoppingCartProvider = ({ children }) => {
   // Shopping Cart · Increment quantity
   const [count, setCount] = useState(0);
 
+  // Nuevo estado para mantener el totalPrice total
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  // Función para actualizar totalPrice después de eliminar un producto
+  const updateTotalPrice = () => {
+    const newTotalPrice = order.reduce(
+      (total, order) => total + order.totalPrice,
+      0
+    );
+    setTotalPrice(newTotalPrice);
+  };
+
   // Product Detail · Open/Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const openProductDetail = () => setIsProductDetailOpen(true);
@@ -34,6 +46,24 @@ export const ShoppingCartProvider = ({ children }) => {
 
   // Get products by category
   const [searchByCategory, setSearchByCategory] = useState(null);
+
+  const removeFromCart = (productId) => {
+    setCartProducts((prevCart) =>
+      prevCart.filter((product) => product.id !== productId)
+    );
+
+    setOrder((prevOrder) => {
+      const updatedOrder = prevOrder.map((order) => ({
+        ...order,
+        products: order.products.filter((product) => product.id !== productId),
+      }));
+
+      return updatedOrder;
+    });
+
+    // Actualizar totalPrice después de eliminar un producto
+    updateTotalPrice();
+  };
 
   useEffect(() => {
     fetch("https://api.escuelajs.co/api/v1/products")
@@ -119,6 +149,9 @@ export const ShoppingCartProvider = ({ children }) => {
         filteredItems,
         searchByCategory,
         setSearchByCategory,
+        removeFromCart,
+        totalPrice, // Agregar totalPrice al contexto
+        updateTotalPrice, // Agregar la función de actualización
       }}
     >
       {children}

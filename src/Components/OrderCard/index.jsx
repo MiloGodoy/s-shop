@@ -1,33 +1,28 @@
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import React from "react";
 
 const OrderCard = (props) => {
-  const { id, title, imageUrl, price, handleDelete } = props;
-
-  let renderXMarkIcon;
-  if (handleDelete) {
-    renderXMarkIcon = (
-      <XMarkIcon
-        onClick={() => handleDelete(id)}
-        className="h-6 w-6 text-black cursor-pointer"
-      ></XMarkIcon>
-    );
-  }
+  const { id, title, imageUrl, price, quantity, productTotal, handleDelete } =
+    props;
 
   return (
-    <div className="flex justify-between items-center mb-3">
-      <div className="flex items-center gap-2">
-        <figure className="w-20 h-20">
-          <img
-            className="w-full h-full rounded-lg object-cover"
-            src={imageUrl}
-            alt={title}
-          />
-        </figure>
-        <p className="text-sm font-light">{title}</p>
+    <div className="flex items-center justify-between mb-3 border border-black rounded-lg p-4">
+      <div className="flex items-center gap-4">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-16 h-16 object-cover rounded"
+        />
+        <div>
+          <p className="font-medium">{title}</p>
+          <p className="text-gray-500">${price} each</p>
+        </div>
       </div>
       <div className="flex items-center gap-2">
-        <p className="text-lg font-medium">${price}</p>
-        {renderXMarkIcon}
+        <p className="font-medium">{quantity}x</p>
+        <p className="font-medium">${productTotal}</p>
+        <button onClick={() => handleDelete(id)} className="text-red-500">
+          X
+        </button>
       </div>
     </div>
   );

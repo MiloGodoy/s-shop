@@ -3,12 +3,18 @@ import { ChevronRightIcon } from "@heroicons/react/24/solid";
 const OrdersCard = (props) => {
   const { totalPrice, totalProducts } = props;
 
+  // Obtener la fecha actual
+  const currentDate = new Date();
+
+  // Formatear la fecha en formato latino
+  const formattedDate = currentDate.toLocaleDateString("es-ES");
+
   return (
     <div className="flex justify-between items-center mb-3 border border-black rounded-lg p-4 w-80">
       <div className="flex justify-between w-full">
         <p className="flex flex-col">
-          <span className="font-light">01.06.23</span>
-          <span className="font-ligth">{totalProducts} articles</span>
+          <span className="font-light">{formattedDate}</span>
+          <span className="font-light">{totalProducts} articles</span>
         </p>
         <p className="flex items-center gap-2">
           <span className="font-medium text-2xl">{totalPrice}</span>

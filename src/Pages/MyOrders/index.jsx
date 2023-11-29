@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../../Components/Layout";
 import OrdersCard from "../../Components/OrdersCard";
@@ -8,11 +8,11 @@ import BillingDetailsForm from "../../Components/BillingDetailsForm/BillingDetai
 function MyOrders() {
   const context = useContext(ShoppingCartContext);
 
-  //using useState to mantain totaPriceProducts value
+  // usando useState para mantener el valor de totalPriceProducts
   const [totalPriceProducts, setTotalPriceProducts] = useState(0);
 
   useEffect(() => {
-    // Calculate totalPriceProducts while chargin page
+    // Calcular totalPriceProducts mientras carga la página
     const totalPrice = context.order.reduce(
       (total, order) => total + order.totalPrice,
       0

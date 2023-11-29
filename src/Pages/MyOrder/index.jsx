@@ -1,15 +1,20 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
-import { ShoppingCartContext } from "../../Context";
+import { useContext } from "react";
 import Layout from "../../Components/Layout";
 import OrderCard from "../../Components/OrderCard";
+import { ShoppingCartContext } from "../../Context";
 
 function MyOrder() {
   const context = useContext(ShoppingCartContext);
   const currentPath = window.location.pathname;
   let index = currentPath.substring(currentPath.lastIndexOf("/") + 1);
   if (index === "last") index = context.order?.length - 1;
+
+  const orderTotal = context.order?.[index]?.products.reduce(
+    (total, product) => total + product.productTotal,
+    0
+  );
 
   return (
     <Layout>
@@ -27,6 +32,12 @@ function MyOrder() {
             title={product.title}
             imageUrl={product.images}
             price={product.price}
+            quantity={product.quantity}
+            productTotal={product.productTotal}
+            handleDelete={() => {
+              console.log("Deleting product with ID:", product.id);
+              context.removeFromCart(product.id);
+            }}
           />
         ))}
       </div>
